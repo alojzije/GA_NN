@@ -5,11 +5,13 @@ from crossover import crossover
 from mutation import Mutation
 from setParser import parseLearningSet
 
-VEL_POP = 100;
-MAX_ITER = 100;
-N = 10;
+
+VEL_POP = 100
+MAX_ITER = 1000
+N =10
 K = 0.2
-fitnessOp = Fitness(parseLearningSet("learningSet/train-set.txt"))
+train_set = parseLearningSet("learningSet/train-set.txt")
+fitnessOp = Fitness(train_set)
 mutationOp = Mutation(K, N, VEL_POP)
 
 P = Population(N, VEL_POP)
@@ -25,5 +27,6 @@ while (MAX_ITER ):
         new_P.addIndividual(child)
     P = new_P
     fitnessOp.evaluate(P)
+    print "%d. gen Err: %s" %(1000-MAX_ITER, fitnessOp.minError)
         
         

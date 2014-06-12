@@ -11,11 +11,11 @@ class Individual:
         self.fitness = fitness
         
     def setWeight(self, index, val):
-        if index >= len(self.weights): raise "In Individual.setWeight(): index %d out of range" %index
+        if index >= len(self.weights): raise BaseException("In Individual.setWeight(): index %d out of range" %index)
         self.weights[index] = val
         
     def getWeight (self, index):
-        if index >= len(self.weights):  raise "In Individual.getWeight(): index %d out of range" %index
+        if index >= len(self.weights):  raise BaseException("In Individual.getWeight(): index %d out of range" %index)
         return self.weights[index]
     
     def getNumberOfWeights(self):
