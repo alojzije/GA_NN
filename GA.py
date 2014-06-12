@@ -2,12 +2,14 @@ from Population import Population
 from fitness import Fitness
 from selection import chooseParents
 from crossover import crossover
-from mutation import mutate
+from mutation import Mutation
 
 VEL_POP = 100;
 MAX_ITER = 100;
 N = 10;
+K = 0.2
 fitnessOp = Fitness()
+mutationOp = Mutation(K, N, VEL_POP)
 
 P = Population(N, VEL_POP)
 fitnessOp.evaluate(P)
@@ -18,7 +20,7 @@ while (MAX_ITER ):
     while new_P.populationSize <VEL_POP:
         parent1, parent2 = chooseParents(P, fitnessOp)
         child = crossover(parent1, parent2)
-        mutate(child)
+        mutationOp.mutate(child)
         new_P.addIndividual(child)
     P = new_P
     fitnessOp.evaluate(P)
