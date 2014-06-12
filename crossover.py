@@ -1,4 +1,3 @@
-from Population import Population
 from Individual import Individual
 
 
