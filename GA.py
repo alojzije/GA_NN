@@ -3,12 +3,13 @@ from fitness import Fitness
 from selection import chooseParents
 from crossover import crossover
 from mutation import Mutation
+from setParser import parseLearningSet
 
 VEL_POP = 100;
 MAX_ITER = 100;
 N = 10;
 K = 0.2
-fitnessOp = Fitness()
+fitnessOp = Fitness(parseLearningSet("learningSet/train-set.txt"))
 mutationOp = Mutation(K, N, VEL_POP)
 
 P = Population(N, VEL_POP)
