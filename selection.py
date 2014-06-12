@@ -10,6 +10,6 @@ def chooseParents(population, fitnessOp):
     
 def getParent(population, probabilities):
     p = random()
-    for (i, individual) in enumerate(population):
+    for i in range(population.populationSize):
         if p <= probabilities[i]:
             return population.getIndividual(i)
