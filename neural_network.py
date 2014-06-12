@@ -22,18 +22,21 @@ class OutputNeuron(object):
 
 def calcError(neural_network, learning_set):
     Error = 0
+    for x, t in learning_set:
+        o = get_nn_output(x, neural_network)
+        Error += 0.5*((t-o)**2)
+    Error /= float(len(learning_set))  ##avg error
+    return Error
+
+
+def get_nn_output(x, neural_network):
     n = neural_network.n
 
     hidden_weights = [(neural_network.getWeight(i), neural_network.getWeight(i+1)) for i in range(0, 2*n, 2)]
     output_weights = neural_network.weights[2*n:]
 
-    for x, t in learning_set:
-        hidden_output = []
-        for w1, w0 in hidden_weights:
-            hidden_output.append(HiddenNeuron.getOutput(w1, w0, x))
-        o = OutputNeuron.getOutput(output_weights, hidden_output)
-        Error += 0.5*((t-o)**2)
-
-    ##avg error
-    Error = Error/float(len(learning_set))
-    return Error
+    hidden_output = []
+    for w1, w0 in hidden_weights:
+        hidden_output.append(HiddenNeuron.getOutput(w1, w0, x))
+    o = OutputNeuron.getOutput(output_weights, hidden_output)
+    return o

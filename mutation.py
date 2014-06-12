@@ -10,5 +10,5 @@ class Mutation:
         for i in range(individual.getNumberOfWeights()): 
             if random.random() <= self.percentage:
                 weight = individual.getWeight(i)
-                weight += random.uniform(0, self.K)
+                weight += random.gauss(0, self.K)
                 individual.setWeight(i, weight)
