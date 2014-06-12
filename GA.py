@@ -12,6 +12,7 @@ from neural_network import HiddenNeuron, OutputNeuron, calcError, get_nn_output
 def run_GA(P, fitnessOp, mutationOp,VEL_POP, MAX_ITER, ERR_THRESHOLD):
     fitnessOp.evaluate(P)
     gen = 0
+    print "%5d. gen,\t error: %s" %(gen, fitnessOp.minError)
     while gen < MAX_ITER and fitnessOp.minError > ERR_THRESHOLD:
         gen += 1
         new_P = Population(P.n,0)
@@ -59,9 +60,9 @@ def writeOut(neural_network, test_set=[], test_dict={}):
 
 def main():
     parser = argparse.ArgumentParser(description='Tweak GA parameters')
-    parser.add_argument('-s','--populationSize',    type=int, required=False, default=100,
+    parser.add_argument('-size','--populationSize', type=int, required=False, default=100,
                         help = 'Desired population size (int)')
-    parser.add_argument('-i','--maxIter',           type=int, required=False, default=100,
+    parser.add_argument('-iter','--maxIter',        type=int, required=False, default=100,
                         help = "Max number of iterations allowed (int)")
     parser.add_argument('-n','--n',                 type=int, required=False, default=10,
                         help = 'Desired number of neural_networks in the hidden layer')
