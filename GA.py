@@ -9,7 +9,7 @@ from setParser import parseLearningSet
 VEL_POP = 100
 MAX_ITER = 1000
 N =10
-K = 0.2
+K = 10
 train_set = parseLearningSet("learningSet/train-set.txt")
 fitnessOp = Fitness(train_set)
 mutationOp = Mutation(K, N, VEL_POP)

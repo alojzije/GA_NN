@@ -9,6 +9,7 @@ class Fitness:
         
     def evaluate(self, population):
         self.fitness_sum = 0.0
+        self.minError = None
         for i in range(population.populationSize):
             self.evaluateIndividual(population.getIndividual(i))
 

@@ -12,3 +12,5 @@ class Mutation:
                 weight += random.uniform(0, self.K)
                 individual.setWeight(i, weight)
                 
+               
+                
