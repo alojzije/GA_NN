@@ -5,8 +5,12 @@ class HiddenNeuron(object):
     @staticmethod
     def getOutput(w1, w0, x):
         net = x*w1 + w0
-        return 1/(1 + exp(-net))
-
+        try:
+            sigmoid = 1/(1 + exp(-net))
+        except OverflowError:
+            sigmoid = 0
+            #print "math.exp() owerflow error, using 0 as sigmoid"k
+        return sigmoid
 
 class OutputNeuron(object):
     @staticmethod
