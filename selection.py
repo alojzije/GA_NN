@@ -1,5 +1,6 @@
 from random import random
 
+
 def chooseParents(population, fitnessOp):
     fit_sum = float(fitnessOp.fitness_sum)
     ind_fitness = [ind.fitness/fit_sum for ind in population.individuals]

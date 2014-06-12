@@ -1,5 +1,6 @@
 import random
 
+
 class Mutation:
     def __init__(self, K, n, populationSize ):
         self.K = K
@@ -11,6 +12,3 @@ class Mutation:
                 weight = individual.getWeight(i)
                 weight += random.uniform(0, self.K)
                 individual.setWeight(i, weight)
-                
-               
-                
